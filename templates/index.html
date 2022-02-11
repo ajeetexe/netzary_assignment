@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>Sudarshan Gupta's Pawn Broker</title>
+</head>
+<body>
+    <h1 class="brand">Sudarshan Gupta's Pawn Broker</h1>
+    <form action="" method="post">
+        {% csrf_token %}
+        {{form.as_p}}
+        <input class="submit" type="submit" value="Submit">
+    </form>
+    <div class="container">
+        <table>
+            <tr>
+                <th>#</th>
+                <th>Release Date</th>
+                <th>Loan Date</th>
+                <th>Principal</th>
+                <th>Grand Total after calculation</th>
+            </tr>
+        {% for x in cim %}
+            <tr>
+                <td>{{forloop.counter}}</td>
+                <td>{{x.end_date}}</td>
+                <td>{{x.start_date}}</td>
+                <td>{{x.principal}}</td>
+                <td>{{x.interest}}</td>
+            </tr>
+        {% endfor %}
+        </table>
+    </div>
+</body>
+</html>
